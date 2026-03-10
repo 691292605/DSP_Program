@@ -1,5 +1,5 @@
 				.mmregs
-				.ref filter_start
+				;.ref filter_start
 K_DATA_SIZE		.set 8
 K_BUFFER_SIZE	.set 8
 
@@ -13,8 +13,8 @@ SYSTEM_STACK	.set	K_STACK_SIZE + STACK
 
 DATA_DP			.usect "filter_vars", 0
 filterdata		.usect "filter_vars", K_DATA_SIZE
-bufferdatay		.usect "filter_vars", K_BUFFERSIZE * 2
-bufferdatax		.usect "filter_vars", K_BUFFERSIZE * 2
+bufferdatay		.usect "filter_vars", K_BUFFER_SIZE*2
+bufferdatax		.usect "filter_vars", K_BUFFER_SIZE*2
 			
 			.data
 			.global inputdata
@@ -69,7 +69,7 @@ filter_start:
 				STM #K_DATA_SIZE - 3 - 1, BRC
 				RPTB filter_end - 1
 				MVDD *ORIGIN+, *INPUT
-				PRT #K_B - 1 - 1
+				RPT #K_B - 1 - 1
 				MAR *INPUT - 0%
 				MPY *INPUT + 0%, #b4, B
 				LD B, A
